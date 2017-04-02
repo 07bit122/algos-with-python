@@ -20,6 +20,9 @@ class Solution(object):
 			9: ['w', 'x', 'y', 'z'],
 		}
 
+		if (len(digits) is 1):
+			return keyMap[int(digits)]
+
 		expectedCombinations = 1
 		for digit in map(int, digits):
 			expectedCombinations *= len(keyMap[digit])
@@ -38,4 +41,4 @@ class Solution(object):
 		return calculatedCombinations;
 
 solution = Solution()
-print(solution.letterCombinations('2345'))
+print(solution.letterCombinations('2'))
