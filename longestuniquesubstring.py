@@ -3,25 +3,15 @@ class Solution(object):
 	def lengthOfLongestSubstring(self, s):
 		initialposition = 0
 		longestlength = 0
+		memoizeMap = {}
 
-		while(initialposition >= 0):
-			usedCharacters = {}
-			longestlengthinthisiteration = 0
-			completedStringParsing = True
-			for index in range(initialposition, len(s)):
-				if(s[index] not in usedCharacters):
-					usedCharacters[s[index]] = index
-					longestlengthinthisiteration += 1
-				else:
-					initialposition = usedCharacters[s[index]] + 1
-					completedStringParsing = False
-					if (longestlengthinthisiteration > longestlength):
-						longestlength = longestlengthinthisiteration
-					break
-			if (completedStringParsing is True):
-				if (longestlengthinthisiteration > longestlength):
-					longestlength = longestlengthinthisiteration
-				initialposition = -1
+		for i in range(len(s)):
+			if (s[i] in memoizeMap and initialposition <= memoizeMap[s[i]]):
+				initialposition = memoizeMap[s[i]] + 1
+			else:
+				longestlength = max(longestlength, i - initialposition + 1)
+
+			memoizeMap[s[i]] = i
 
 		return longestlength
 
