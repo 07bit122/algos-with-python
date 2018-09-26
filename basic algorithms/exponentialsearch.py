@@ -30,4 +30,4 @@ output = exponentialsearch(input, len(input), 10)
 if (output != -1):
     print "Exponential search found element at index ", output
 else:
-    print "Exponential search did not find the element in the input"
+    print "Exponential search did not find the element in the input."
