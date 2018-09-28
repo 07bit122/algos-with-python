@@ -2,6 +2,7 @@ def mergesort(input, left, right):
     if(right > left):
         middle = (right + left) / 2
 
+        # recursively split the array into subarrays
         mergesort(input, left, middle)
         mergesort(input, middle+1, right)
 
