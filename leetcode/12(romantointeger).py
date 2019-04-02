@@ -17,21 +17,19 @@ class Solution(object):
             'CM': 900
         }
 
-        # convert the input to a string
-        listofs = list(s)
         total = 0
-        for x in range(len(listofs)):
+        for x in range(len(s)):
             # cannot look back on first index, so if condition
             if (x > 0):
                 # combine the current letter with previous letter and check if that exists in our keys
-                appended_string = listofs[x-1] + listofs[x]
+                appended_string = s[x-1] + s[x]
                 if (appended_string in values.keys()):
                     # subtract the value of previous letter and add the combo value to total
-                    total = total - values[listofs[x-1]]
-                    total = total + values[listofs[x-1]+listofs[x]]
+                    total = total - values[s[x-1]]
+                    total = total + values[s[x-1]+s[x]]
                     continue
             # default total add for all cases
-            total = total + values[listofs[x]]
+            total = total + values[s[x]]
     
         return total
 
